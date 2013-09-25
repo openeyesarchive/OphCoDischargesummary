@@ -25,7 +25,7 @@ class DefaultController extends BaseEventTypeController
 	public function actionAddMedication()
 	{
 		$medication = new OphCoDischargesummary_Medication_Item;
-		$this->renderPartial('_medication_item',array('medication'=>$medication));
+		$this->renderPartial('_medication_item_edit',array('medication'=>$medication));
 	}
 
 	public function getMedications($element)
