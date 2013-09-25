@@ -18,33 +18,10 @@
  */
 ?>
 
-<h4 class="elementTypeName"><?php echo $element->elementType->name?></h4>
-
-<table class="subtleWhite normalText">
-	<tbody>
-		<tr>
-			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('medications_unchanged'))?></td>
-			<td><span class="big"><?php echo $element->medications_unchanged ? 'Yes' : 'No'?></span></td>
-		</tr>
-	</tbody>
-</table>
-
-<?php if ($this->getMedications($element)) {?>
-	<table class="eventDetail medications">
-		<thead>
-			<tr>
-				<th style="width: 15.2em;">Medication</th>
-				<th>Route</th>
-				<th>Frequency</th>
-				<th>Duration</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach ($this->getMedications($element) as $medication) {?>
-				<?php echo $this->renderPartial('_medication_item_view',array('medication'=>$medication))?>
-			<?php }?>
-		</tbody>
-	</table>
-<?php }else{?>
-	<p><strong>No medications were issued.</strong></p>
-<?php }?>
+<tr>
+	<td><?php echo CHtml::dropDownList('medication_id[]',$medication->medication_id,CHtml::listData(OphCoDischargesummary_Medication::model()->findAll(array('order'=>'display_order asc')),'id','name'),array('empty'=>'- Select -'))?></td>
+	<td><?php echo CHtml::dropDownList('route_id[]',$medication->route_id,CHtml::listData(OphCoDischargesummary_Route::model()->findAll(array('order'=>'display_order asc')),'id','name'),array('empty'=>'- Select -'))?></td>
+	<td><?php echo CHtml::dropDownList('frequency_id[]',$medication->frequency_id,CHtml::listData(OphCoDischargesummary_Frequency::model()->findAll(array('order'=>'display_order asc')),'id','name'),array('empty'=>'- Select -'))?></td>
+	<td><?php echo CHtml::dropDownList('duration_id[]',$medication->duration_id,CHtml::listData(OphCoDischargesummary_Duration::model()->findAll(array('order'=>'display_order asc')),'id','name'),array('empty'=>'- Select -'))?></td>
+	<td><a href="#" class="removeMedication">remove</a>
+</tr>

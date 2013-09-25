@@ -76,7 +76,6 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'do_not_use_pad_or_shield' => 'tinyint(1) unsigned NOT NULL',
 				'wash_your_hands' => 'tinyint(1) unsigned NOT NULL',
 				'do_not_rub_your_eye' => 'tinyint(1) unsigned NOT NULL',
-				'do_not_rub_your_eye' => 'tinyint(1) unsigned NOT NULL',
 				'wash_eye_shield' => 'tinyint(1) unsigned NOT NULL',
 				'keep_water_out_of_your_eye' => 'tinyint(1) unsigned NOT NULL',
 				'wear_glasses' => 'tinyint(1) unsigned NOT NULL',
@@ -127,6 +126,18 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'CONSTRAINT `ophcodischargesummary_medication_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
 
+		$this->insert('ophcodischargesummary_medication',array('name'=>'Intracameral Cefuroxime','display_order'=>1));
+		$this->insert('ophcodischargesummary_medication',array('name'=>'Sub-conj Cephalexin 0.25 mg','display_order'=>2));
+		$this->insert('ophcodischargesummary_medication',array('name'=>'Sub-conj Gentimicin','display_order'=>3));
+		$this->insert('ophcodischargesummary_medication',array('name'=>'Sub-conj Dexamethasone 4mg','display_order'=>4));
+		$this->insert('ophcodischargesummary_medication',array('name'=>'Sub-conj Betnesol 4mg','display_order'=>5));
+		$this->insert('ophcodischargesummary_medication',array('name'=>'G. Chloramphenicol','display_order'=>6));
+		$this->insert('ophcodischargesummary_medication',array('name'=>'OC Chloramphenicol','display_order'=>7));
+		$this->insert('ophcodischargesummary_medication',array('name'=>'Tetracaine 1%','display_order'=>8));
+		$this->insert('ophcodischargesummary_medication',array('name'=>'Sub-conj Cefuroxime','display_order'=>9));
+		$this->insert('ophcodischargesummary_medication',array('name'=>'Atropine (1%) Drops','display_order'=>10));
+		$this->insert('ophcodischargesummary_medication',array('name'=>'Adrenaline (0.1%) Drops','display_order'=>11));
+
 		$this->createTable('ophcodischargesummary_route', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
 				'name' => 'varchar(64) COLLATE utf8_bin NOT NULL',
@@ -142,9 +153,31 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'CONSTRAINT `ophcodischargesummary_route_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
 
+		$this->insert('ophcodischargesummary_route',array('name'=>'Eye','display_order'=>1));
+		$this->insert('ophcodischargesummary_route',array('name'=>'IM','display_order'=>2));
+		$this->insert('ophcodischargesummary_route',array('name'=>'Inhalation','display_order'=>3));
+		$this->insert('ophcodischargesummary_route',array('name'=>'Intracameral','display_order'=>4));
+		$this->insert('ophcodischargesummary_route',array('name'=>'Intradermal','display_order'=>5));
+		$this->insert('ophcodischargesummary_route',array('name'=>'Intravitreal','display_order'=>6));
+		$this->insert('ophcodischargesummary_route',array('name'=>'IV','display_order'=>7));
+		$this->insert('ophcodischargesummary_route',array('name'=>'Nose','display_order'=>8));
+		$this->insert('ophcodischargesummary_route',array('name'=>'Ocular Muscle','display_order'=>9));
+		$this->insert('ophcodischargesummary_route',array('name'=>'PO','display_order'=>10));
+		$this->insert('ophcodischargesummary_route',array('name'=>'PR','display_order'=>11));
+		$this->insert('ophcodischargesummary_route',array('name'=>'PV','display_order'=>12));
+		$this->insert('ophcodischargesummary_route',array('name'=>'Sub-Conj','display_order'=>13));
+		$this->insert('ophcodischargesummary_route',array('name'=>'Sub-lingual','display_order'=>14));
+		$this->insert('ophcodischargesummary_route',array('name'=>'Subcutaneous','display_order'=>15));
+		$this->insert('ophcodischargesummary_route',array('name'=>'To Nose','display_order'=>16));
+		$this->insert('ophcodischargesummary_route',array('name'=>'To skin','display_order'=>17));
+		$this->insert('ophcodischargesummary_route',array('name'=>'Topical','display_order'=>18));
+		$this->insert('ophcodischargesummary_route',array('name'=>'Other','display_order'=>19));
+		$this->insert('ophcodischargesummary_route',array('name'=>'n/a','display_order'=>20));
+
 		$this->createTable('ophcodischargesummary_frequency', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
 				'name' => 'varchar(64) COLLATE utf8_bin NOT NULL',
+				'long_name' => 'varchar(64) COLLATE utf8_bin NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -156,6 +189,27 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'CONSTRAINT `ophcodischargesummary_frequency_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcodischargesummary_frequency_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'Every 15 mins','long_name'=>'every fifteen minute','display_order'=>1));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'1/2 hourly','long_name'=>'every half hour','display_order'=>2));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'hourly','long_name'=>'every hour','display_order'=>3));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'2 hourly','long_name'=>'every two hours','display_order'=>4));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'4-6 hourly prn','long_name'=>'every four to six hours when needed','display_order'=>5));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'5/day','long_name'=>'five times a day','display_order'=>6));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'6 hourly','long_name'=>'every 6 hours','display_order'=>7));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'qid','long_name'=>'four times a day','display_order'=>8));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'tid','long_name'=>'three times a day','display_order'=>9));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'bd','long_name'=>'twice a day','display_order'=>10));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'od','long_name'=>'once a day','display_order'=>11));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'morning','long_name'=>'in the morning','display_order'=>12));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'bedtime','long_name'=>'at bedtime','display_order'=>13));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'nocte','long_name'=>'at night','display_order'=>14));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'alt days','long_name'=>'alternate days','display_order'=>15));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'3/week','long_name'=>'three times a week','display_order'=>16));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'2/week','long_name'=>'twice a week','display_order'=>17));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'1/week','long_name'=>'once a week','display_order'=>18));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'prn','long_name'=>'when needed','display_order'=>19));
+		$this->insert('ophcodischargesummary_frequency',array('name'=>'other','long_name'=>'other','display_order'=>20));
 
 		$this->createTable('ophcodischargesummary_duration', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
@@ -171,6 +225,18 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'CONSTRAINT `ophcodischargesummary_duration_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcodischargesummary_duration_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+
+		$this->insert('ophcodischargesummary_duration',array('name'=>'1 day','display_order'=>1));
+		$this->insert('ophcodischargesummary_duration',array('name'=>'2 days','display_order'=>2));
+		$this->insert('ophcodischargesummary_duration',array('name'=>'3 days','display_order'=>3));
+		$this->insert('ophcodischargesummary_duration',array('name'=>'4 days','display_order'=>4));
+		$this->insert('ophcodischargesummary_duration',array('name'=>'5 days','display_order'=>5));
+		$this->insert('ophcodischargesummary_duration',array('name'=>'7 days','display_order'=>6));
+		$this->insert('ophcodischargesummary_duration',array('name'=>'10 days','display_order'=>7));
+		$this->insert('ophcodischargesummary_duration',array('name'=>'14 days','display_order'=>8));
+		$this->insert('ophcodischargesummary_duration',array('name'=>'1 month','display_order'=>9));
+		$this->insert('ophcodischargesummary_duration',array('name'=>'6 weeks','display_order'=>10));
+		$this->insert('ophcodischargesummary_duration',array('name'=>'Other','display_order'=>11));
 
 		$this->createTable('ophcodischargesummary_medication_item', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',

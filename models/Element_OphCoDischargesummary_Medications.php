@@ -119,22 +119,61 @@ class Element_OphCoDischargesummary_Medications extends BaseEventTypeElement
 		));
 	}
 
-
-
-	protected function beforeSave()
+	protected function beforeValidate()
 	{
-		return parent::beforeSave();
+		if (!empty($_POST['medication_id'])) {
+			foreach ($_POST['medication_id'] as $i => $medication_id) {
+				$medication = new OphCoDischargesummary_Medication_Item;
+				$medication->medication_id = $medication_id;
+				$medication->route_id = $_POST['route_id'][$i];
+				$medication->frequency_id = $_POST['frequency_id'][$i];
+				$medication->duration_id = $_POST['duration_id'][$i];
+
+				if (!$medication->validate()) {
+					foreach ($medication->getErrors() as $error) {
+						$this->addError('medication',$error[0]);
+					}
+				}
+			}
+		}
+
+		return parent::beforeValidate();
 	}
 
 	protected function afterSave()
 	{
+		$medication_ids = array();
+
+		if (!empty($_POST['medication_id'])) {
+			foreach ($_POST['medication_id'] as $i => $medication_id) {
+				if (!$medication = OphCoDischargesummary_Medication_Item::model()->find('element_id=? and medication_id=?',array($this->id,$medication_id))) {
+					$medication = new OphCoDischargesummary_Medication_Item;
+					$medication->element_id = $this->id;
+					$medication->medication_id = $medication_id;
+				}
+				$medication->route_id = $_POST['route_id'][$i];
+				$medication->frequency_id = $_POST['frequency_id'][$i];
+				$medication->duration_id = $_POST['duration_id'][$i];
+
+				if (!$medication->save()) {
+					throw new Exception("Unable to save medication: ".print_r($medication->getErrors(),true));
+				}
+
+				$medication_ids[] = $medication->id;
+			}
+		}
+
+		$criteria = new CDbCriteria;
+		$criteria->addCondition('element_id = :element_id');
+		$criteria->params[':element_id'] = $this->id;
+
+		if (!empty($medication_ids)) {
+			$criteria->addNotInCondition('id',$medication_ids);
+		}
+
+		OphCoDischargesummary_Medication_Item::model()->deleteAll($criteria);
 
 		return parent::afterSave();
-	}
-
-	protected function beforeValidate()
-	{
-		return parent::beforeValidate();
 	}
 }
 ?>

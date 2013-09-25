@@ -25,5 +25,24 @@
 	data-element-display-order="<?php echo $element->elementType->display_order?>">
 	<h4 class="elementTypeName"><?php echo $element->elementType->name; ?></h4>
 
-	<?php echo $form->checkBox($element, 'medications_unchanged')?>
+	<?php echo $form->checkBox($element, 'medications_unchanged', array('text-align'=>'right'))?>
+
+	<div class="eventDetail medications_container">
+		<table class="eventDetail medications">
+			<thead>
+				<tr>
+					<th style="width: 15.2em;">Medication</th>
+					<th>Route</th>
+					<th>Frequency</th>
+					<th>Duration</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($this->getMedications($element) as $medication) {?>
+					<?php echo $this->renderPartial('_medication_item_edit',array('medication'=>$medication))?>
+				<?php }?>
+			</tbody>
+		</table>
+		<a href="#" class="addMedication">Add medication</a>
+	</div>
 </div>

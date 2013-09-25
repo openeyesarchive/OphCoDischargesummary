@@ -18,33 +18,9 @@
  */
 ?>
 
-<h4 class="elementTypeName"><?php echo $element->elementType->name?></h4>
-
-<table class="subtleWhite normalText">
-	<tbody>
-		<tr>
-			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('medications_unchanged'))?></td>
-			<td><span class="big"><?php echo $element->medications_unchanged ? 'Yes' : 'No'?></span></td>
-		</tr>
-	</tbody>
-</table>
-
-<?php if ($this->getMedications($element)) {?>
-	<table class="eventDetail medications">
-		<thead>
-			<tr>
-				<th style="width: 15.2em;">Medication</th>
-				<th>Route</th>
-				<th>Frequency</th>
-				<th>Duration</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach ($this->getMedications($element) as $medication) {?>
-				<?php echo $this->renderPartial('_medication_item_view',array('medication'=>$medication))?>
-			<?php }?>
-		</tbody>
-	</table>
-<?php }else{?>
-	<p><strong>No medications were issued.</strong></p>
-<?php }?>
+<tr>
+	<td><?php echo $medication->medication->name?></td>
+	<td><?php echo $medication->route->name?></td>
+	<td><?php echo $medication->frequency->name?></td>
+	<td><?php echo $medication->duration->name?></td>
+</tr>

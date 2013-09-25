@@ -18,23 +18,15 @@
  */
 
 /**
- * This is the model class for table "et_ophcodischargesummary_charges".
+ * This is the model class for table "ophcodischargesummary_medication".
  *
  * The followings are the available columns in table:
  * @property string $id
- * @property integer $event_id
- * @property integer $charged
- *
- * The followings are the available model relations:
- *
- * @property ElementType $element_type
- * @property EventType $eventType
- * @property Event $event
- * @property User $user
- * @property User $usermodified
+ * @property string $name
+ * @property integer $display_order
  */
 
-class Element_OphCoDischargesummary_Charges extends BaseEventTypeElement
+class OphCoDischargesummary_Medication extends BaseEventTypeElement
 {
 	public $service;
 
@@ -52,7 +44,7 @@ class Element_OphCoDischargesummary_Charges extends BaseEventTypeElement
 	 */
 	public function tableName()
 	{
-		return 'et_ophcodischargesummary_charges';
+		return 'ophcodischargesummary_medication';
 	}
 
 	/**
@@ -63,11 +55,11 @@ class Element_OphCoDischargesummary_Charges extends BaseEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, charged, ', 'safe'),
-			array('charged, ', 'required'),
+			array('name, display_order', 'safe'),
+			array('name, display_order', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, charged, ', 'safe', 'on' => 'search'),
+			array('id, name, display_order', 'safe', 'on' => 'search'),
 		);
 	}
 
@@ -79,11 +71,6 @@ class Element_OphCoDischargesummary_Charges extends BaseEventTypeElement
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'element_type' => array(self::HAS_ONE, 'ElementType', 'id','on' => "element_type.class_name='".get_class($this)."'"),
-			'eventType' => array(self::BELONGS_TO, 'EventType', 'event_type_id'),
-			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
-			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
-			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
 		);
 	}
 
@@ -94,8 +81,7 @@ class Element_OphCoDischargesummary_Charges extends BaseEventTypeElement
 	{
 		return array(
 			'id' => 'ID',
-			'event_id' => 'Event',
-			'charged' => 'Patient was charged during their care with ORBIS',
+			'name' => 'Name',
 		);
 	}
 
@@ -105,36 +91,15 @@ class Element_OphCoDischargesummary_Charges extends BaseEventTypeElement
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id, true);
-		$criteria->compare('event_id', $this->event_id, true);
-		$criteria->compare('charged', $this->charged);
+		$criteria->compare('name', $this->name);
+		$criteria->compare('display_order', $this->display_order);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria' => $criteria,
 		));
-	}
-
-
-
-	protected function beforeSave()
-	{
-		return parent::beforeSave();
-	}
-
-	protected function afterSave()
-	{
-
-		return parent::afterSave();
-	}
-
-	protected function beforeValidate()
-	{
-		return parent::beforeValidate();
 	}
 }
 ?>

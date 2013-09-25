@@ -39,6 +39,23 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+	$('a.addMedication').click(function(e) {
+		e.preventDefault();
+
+		$.ajax({
+			'type': 'GET',
+			'url': baseUrl+'/OphCoDischargesummary/default/addMedication',
+			'success': function(html) {
+				$('table.medications tbody').append(html);
+			}
+		});
+	});
+
+	$('a.removeMedication').die('click').live('click',function(e) {
+		e.preventDefault();
+		$(this).parent().parent().remove();
+	});
 });
 
 function ucfirst(str) { str += ''; var f = str.charAt(0).toUpperCase(); return f + str.substr(1); }

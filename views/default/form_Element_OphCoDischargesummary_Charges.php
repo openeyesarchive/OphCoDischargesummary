@@ -25,5 +25,5 @@
 	data-element-display-order="<?php echo $element->elementType->display_order?>">
 	<h4 class="elementTypeName"><?php echo $element->elementType->name; ?></h4>
 
-	<?php echo $form->checkBox($element, 'charged')?>
+	<?php echo $form->checkBox($element, 'charged', array('text-align'=>'right'))?>
 </div>

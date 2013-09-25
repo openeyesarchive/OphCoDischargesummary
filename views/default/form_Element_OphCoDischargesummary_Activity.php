@@ -25,9 +25,9 @@
 	data-element-display-order="<?php echo $element->elementType->display_order?>">
 	<h4 class="elementTypeName"><?php echo $element->elementType->name; ?></h4>
 
-	<?php echo $form->checkBox($element, 'resume_normal_activity')?>
+	<?php echo $form->checkBox($element, 'resume_normal_activity', array('text-align'=>'right'))?>
 	<?php echo $form->textField($element, 'posturing', array('size' => '30'))?>
-	<?php echo $form->checkBox($element, 'avoid_strenuous_activity')?>
-	<?php echo $form->checkBox($element, 'bend_with_knees_not_waist')?>
-	<?php echo $form->textArea($element, 'comments', array('rows' => 6, 'cols' => 80))?>
+	<?php echo $form->checkBox($element, 'avoid_strenuous_activity', array('text-align'=>'right'))?>
+	<?php echo $form->checkBox($element, 'bend_with_knees_not_waist', array('text-align'=>'right'))?>
+	<?php echo $form->textArea($element, 'comments', array('rows' => 4, 'cols' => 80))?>
 </div>

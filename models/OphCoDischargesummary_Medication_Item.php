@@ -18,23 +18,19 @@
  */
 
 /**
- * This is the model class for table "et_ophcodischargesummary_charges".
+ * This is the model class for table "ophcodischargesummary_medication_item".
  *
  * The followings are the available columns in table:
- * @property string $id
- * @property integer $event_id
- * @property integer $charged
- *
- * The followings are the available model relations:
- *
- * @property ElementType $element_type
- * @property EventType $eventType
- * @property Event $event
- * @property User $user
- * @property User $usermodified
+ * @property integer $id
+ * @property integer $element_id
+ * @property integer $medication_id
+ * @property integer $route_id
+ * @property integer $frequency_id
+ * @property integer $duration_id
+ * @property integer $display_order
  */
 
-class Element_OphCoDischargesummary_Charges extends BaseEventTypeElement
+class OphCoDischargesummary_Medication_Item extends BaseEventTypeElement
 {
 	public $service;
 
@@ -52,7 +48,7 @@ class Element_OphCoDischargesummary_Charges extends BaseEventTypeElement
 	 */
 	public function tableName()
 	{
-		return 'et_ophcodischargesummary_charges';
+		return 'ophcodischargesummary_medication_item';
 	}
 
 	/**
@@ -63,11 +59,11 @@ class Element_OphCoDischargesummary_Charges extends BaseEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, charged, ', 'safe'),
-			array('charged, ', 'required'),
+			array('medication_id, route_id, frequency_id, duration_id', 'safe'),
+			array('medication_id, route_id, frequency_id, duration_id', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, charged, ', 'safe', 'on' => 'search'),
+			array('id, medication_id, route_id, frequency_id, duration_id, display_order', 'safe', 'on' => 'search'),
 		);
 	}
 
@@ -79,11 +75,10 @@ class Element_OphCoDischargesummary_Charges extends BaseEventTypeElement
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'element_type' => array(self::HAS_ONE, 'ElementType', 'id','on' => "element_type.class_name='".get_class($this)."'"),
-			'eventType' => array(self::BELONGS_TO, 'EventType', 'event_type_id'),
-			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
-			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
-			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
+			'medication' => array(self::BELONGS_TO, 'OphCoDischargesummary_Medication', 'medication_id'),
+			'route' => array(self::BELONGS_TO, 'OphCoDischargesummary_Route', 'route_id'),
+			'frequency' => array(self::BELONGS_TO, 'OphCoDischargesummary_Frequency', 'frequency_id'),
+			'duration' => array(self::BELONGS_TO, 'OphCoDischargesummary_Duration', 'duration_id'),
 		);
 	}
 
@@ -94,8 +89,11 @@ class Element_OphCoDischargesummary_Charges extends BaseEventTypeElement
 	{
 		return array(
 			'id' => 'ID',
-			'event_id' => 'Event',
-			'charged' => 'Patient was charged during their care with ORBIS',
+			'name' => 'Name',
+			'medication_id' => 'Medication',
+			'route_id' => 'Route',
+			'frequency_id' => 'Frequency',
+			'duration_id' => 'Duration',
 		);
 	}
 
@@ -105,36 +103,18 @@ class Element_OphCoDischargesummary_Charges extends BaseEventTypeElement
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id, true);
-		$criteria->compare('event_id', $this->event_id, true);
-		$criteria->compare('charged', $this->charged);
+		$criteria->compare('name', $this->name);
+		$criteria->compare('medication_id', $this->medication_id);
+		$criteria->compare('route_id', $this->route_id);
+		$criteria->compare('frequency_id', $this->frequency_id);
+		$criteria->compare('duration_id', $this->duration_id);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria' => $criteria,
 		));
-	}
-
-
-
-	protected function beforeSave()
-	{
-		return parent::beforeSave();
-	}
-
-	protected function afterSave()
-	{
-
-		return parent::afterSave();
-	}
-
-	protected function beforeValidate()
-	{
-		return parent::beforeValidate();
 	}
 }
 ?>

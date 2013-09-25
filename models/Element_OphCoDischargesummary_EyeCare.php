@@ -28,7 +28,6 @@
  * @property integer $do_not_use_pad_or_shield
  * @property integer $wash_your_hands
  * @property integer $do_not_rub_your_eye
- * @property integer $do_not_rub_your_eye
  * @property integer $wash_eye_shield
  * @property integer $keep_water_out_of_your_eye
  * @property integer $wear_glasses
@@ -73,11 +72,11 @@ class Element_OphCoDischargesummary_EyeCare extends BaseEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, wear_eye_shield_until, wear_shield_when_sleeping, do_not_use_pad_or_shield, wash_your_hands, do_not_rub_your_eye, do_not_rub_your_eye, wash_eye_shield, keep_water_out_of_your_eye, wear_glasses, dont_contaminate, comments, ', 'safe'),
-			array('wear_eye_shield_until, wear_shield_when_sleeping, do_not_use_pad_or_shield, wash_your_hands, do_not_rub_your_eye, do_not_rub_your_eye, wash_eye_shield, keep_water_out_of_your_eye, wear_glasses, dont_contaminate, comments, ', 'required'),
+			array('event_id, wear_eye_shield_until, wear_shield_when_sleeping, do_not_use_pad_or_shield, wash_your_hands, do_not_rub_your_eye, wash_eye_shield, keep_water_out_of_your_eye, wear_glasses, dont_contaminate, comments, ', 'safe'),
+			array('wear_eye_shield_until, wear_shield_when_sleeping, do_not_use_pad_or_shield, wash_your_hands, do_not_rub_your_eye, wash_eye_shield, keep_water_out_of_your_eye, wear_glasses, dont_contaminate, comments, ', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, wear_eye_shield_until, wear_shield_when_sleeping, do_not_use_pad_or_shield, wash_your_hands, do_not_rub_your_eye, do_not_rub_your_eye, wash_eye_shield, keep_water_out_of_your_eye, wear_glasses, dont_contaminate, comments, ', 'safe', 'on' => 'search'),
+			array('id, event_id, wear_eye_shield_until, wear_shield_when_sleeping, do_not_use_pad_or_shield, wash_your_hands, do_not_rub_your_eye, wash_eye_shield, keep_water_out_of_your_eye, wear_glasses, dont_contaminate, comments, ', 'safe', 'on' => 'search'),
 		);
 	}
 
@@ -110,7 +109,6 @@ class Element_OphCoDischargesummary_EyeCare extends BaseEventTypeElement
 			'do_not_use_pad_or_shield' => 'Do not use pad or shield',
 			'wash_your_hands' => 'Wash your hands before and after touching your eye and instilling medications',
 			'do_not_rub_your_eye' => 'Do not rub your eye',
-			'do_not_rub_your_eye' => 'Do not rub your eye',
 			'wash_eye_shield' => 'Wash eye shield with soap and water if dirty',
 			'keep_water_out_of_your_eye' => 'Keep water out of your eye',
 			'wear_glasses' => 'Wear glasses when awake for safety',
@@ -137,7 +135,6 @@ class Element_OphCoDischargesummary_EyeCare extends BaseEventTypeElement
 		$criteria->compare('do_not_use_pad_or_shield', $this->do_not_use_pad_or_shield);
 		$criteria->compare('wash_your_hands', $this->wash_your_hands);
 		$criteria->compare('do_not_rub_your_eye', $this->do_not_rub_your_eye);
-		$criteria->compare('do_not_rub_your_eye', $this->do_not_rub_your_eye);
 		$criteria->compare('wash_eye_shield', $this->wash_eye_shield);
 		$criteria->compare('keep_water_out_of_your_eye', $this->keep_water_out_of_your_eye);
 		$criteria->compare('wear_glasses', $this->wear_glasses);
@@ -147,24 +144,6 @@ class Element_OphCoDischargesummary_EyeCare extends BaseEventTypeElement
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria' => $criteria,
 		));
-	}
-
-
-
-	protected function beforeSave()
-	{
-		return parent::beforeSave();
-	}
-
-	protected function afterSave()
-	{
-
-		return parent::afterSave();
-	}
-
-	protected function beforeValidate()
-	{
-		return parent::beforeValidate();
 	}
 }
 ?>

@@ -26,14 +26,13 @@
 	<h4 class="elementTypeName"><?php echo $element->elementType->name; ?></h4>
 
 	<?php echo $form->datePicker($element, 'wear_eye_shield_until', array('maxDate' => 'today'), array('style'=>'width: 110px;'))?>
-	<?php echo $form->checkBox($element, 'wear_shield_when_sleeping')?>
-	<?php echo $form->checkBox($element, 'do_not_use_pad_or_shield')?>
-	<?php echo $form->checkBox($element, 'wash_your_hands')?>
-	<?php echo $form->checkBox($element, 'do_not_rub_your_eye')?>
-	<?php echo $form->checkBox($element, 'do_not_rub_your_eye')?>
-	<?php echo $form->checkBox($element, 'wash_eye_shield')?>
-	<?php echo $form->checkBox($element, 'keep_water_out_of_your_eye')?>
-	<?php echo $form->checkBox($element, 'wear_glasses')?>
-	<?php echo $form->checkBox($element, 'dont_contaminate')?>
-	<?php echo $form->textArea($element, 'comments', array('rows' => 6, 'cols' => 80))?>
+	<?php echo $form->checkBox($element, 'wear_shield_when_sleeping', array('text-align' => 'right'))?>
+	<?php echo $form->checkBox($element, 'do_not_use_pad_or_shield', array('text-align' => 'right'))?>
+	<?php echo $form->checkBox($element, 'wash_your_hands', array('text-align' => 'right'))?>
+	<?php echo $form->checkBox($element, 'do_not_rub_your_eye', array('text-align' => 'right'))?>
+	<?php echo $form->checkBox($element, 'wash_eye_shield', array('text-align' => 'right'))?>
+	<?php echo $form->checkBox($element, 'keep_water_out_of_your_eye', array('text-align' => 'right'))?>
+	<?php echo $form->checkBox($element, 'wear_glasses', array('text-align' => 'right'))?>
+	<?php echo $form->checkBox($element, 'dont_contaminate', array('text-align' => 'right'))?>
+	<?php echo $form->textArea($element, 'comments', array('rows' => 4, 'cols' => 80))?>
 </div>
