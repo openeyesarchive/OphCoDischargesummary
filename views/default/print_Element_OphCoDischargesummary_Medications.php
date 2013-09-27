@@ -18,24 +18,33 @@
  */
 ?>
 
-<?php
-	$this->breadcrumbs=array($this->module->id);
-	$this->header();
-?>
+<h4 class="elementTypeName"><?php echo $element->elementType->name?></h4>
 
-<h3 class="withEventIcon"><?php echo $this->event_type->name?></h3>
+<table class="subtleWhite normalText">
+	<tbody>
+		<tr>
+			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('medications_unchanged'))?></td>
+			<td><span class="big"><?php echo $element->medications_unchanged ? 'Yes' : 'No'?></span></td>
+		</tr>
+	</tbody>
+</table>
 
-<?php
-if ($this->canPrint()) {
-	$this->event_actions[] = EventAction::button('Print', 'print');
-}
-$this->renderPartial('//patient/event_actions');
-?>
-
-<div>
-	<?php $this->renderDefaultElements($this->action->id)?>
-	<?php $this->renderOptionalElements($this->action->id)?>
-	<div class="cleartall"></div>
-</div>
-
-<?php $this->footer()?>
+<?php if ($this->getMedications($element)) {?>
+	<table class="eventDetail medications">
+		<thead>
+			<tr>
+				<th style="width: 15.2em;">Medication</th>
+				<th>Route</th>
+				<th>Frequency</th>
+				<th>Duration</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($this->getMedications($element) as $medication) {?>
+				<?php echo $this->renderPartial('_medication_item_view',array('medication'=>$medication))?>
+			<?php }?>
+		</tbody>
+	</table>
+<?php }else{?>
+	<p><strong>No medications were issued.</strong></p>
+<?php }?>

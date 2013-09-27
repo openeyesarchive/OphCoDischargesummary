@@ -40,7 +40,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$('a.addMedication').click(function(e) {
+	$('button.addMedication').click(function(e) {
 		e.preventDefault();
 
 		$.ajax({
@@ -55,6 +55,10 @@ $(document).ready(function() {
 	$('a.removeMedication').die('click').live('click',function(e) {
 		e.preventDefault();
 		$(this).parent().parent().remove();
+	});
+
+	handleButton($('#et_print'),function(e) {
+		printIFrameUrl(OE_print_url,{});
 	});
 });
 

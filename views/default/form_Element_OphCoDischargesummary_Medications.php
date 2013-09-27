@@ -43,6 +43,8 @@
 				<?php }?>
 			</tbody>
 		</table>
-		<a href="#" class="addMedication">Add medication</a>
+		<button class="addMedication classy green mini" type="button">
+			<span class="button-span button-span-green">Add medication</span>
+		</button>
 	</div>
 </div>
