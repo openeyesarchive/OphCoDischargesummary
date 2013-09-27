@@ -25,7 +25,7 @@
 	data-element-display-order="<?php echo $element->elementType->display_order?>">
 	<h4 class="elementTypeName"><?php echo $element->elementType->name; ?></h4>
 
-	<?php echo $form->datePicker($element, 'wear_eye_shield_until', array('maxDate' => 'today'), array('style'=>'width: 110px;'))?>
+	<?php echo $form->datePicker($element, 'wear_eye_shield_until', array(), array('style'=>'width: 110px;'))?>
 	<?php echo $form->checkBox($element, 'wear_shield_when_sleeping', array('text-align' => 'right'))?>
 	<?php echo $form->checkBox($element, 'do_not_use_pad_or_shield', array('text-align' => 'right'))?>
 	<?php echo $form->checkBox($element, 'wash_your_hands', array('text-align' => 'right'))?>
