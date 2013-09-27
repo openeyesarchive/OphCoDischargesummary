@@ -26,9 +26,27 @@
 	<h4 class="elementTypeName"><?php echo $element->elementType->name; ?></h4>
 
 	<?php echo $form->textField($element, 'local_name', array('size' => '30'))?>
-	<?php echo $form->datePicker($element, 'local_datetime', array('maxDate' => 'today'), array('style'=>'width: 110px;'))?>
+
+	<div class="eventDetail">
+		<div class="label"><?php echo $element->getAttributeLabel('local_date')?>:</div>
+		<div class="data">
+			<?php echo $form->datePicker($element, 'local_date', array('maxDate' => 'today'), array('style'=>'width: 110px;','nowrapper'=>true))?>
+			<div class="label" style="margin-left: 1em; display: inline-block;"><?php echo $element->getAttributeLabel('local_time')?>:</div>
+			<?php echo $form->textField($element, 'local_time', array('size'=>6,'nowrapper'=>true))?>
+		</div>
+	</div>
+
 	<?php echo $form->textField($element, 'local_location', array('size' => '30'))?>
 	<?php echo $form->textField($element, 'orbis_name', array('size' => '30'))?>
-	<?php echo $form->datePicker($element, 'orbis_datetime', array('maxDate' => 'today'), array('style'=>'width: 110px;'))?>
+
+	<div class="eventDetail">
+		<div class="label"><?php echo $element->getAttributeLabel('orbis_date')?>:</div>
+		<div class="data">
+			<?php echo $form->datePicker($element, 'orbis_date', array('maxDate' => 'today'), array('style'=>'width: 110px;','nowrapper'=>true))?>
+			<div class="label" style="margin-left: 1em; display: inline-block;"><?php echo $element->getAttributeLabel('orbis_time')?>:</div>
+			<?php echo $form->textField($element, 'orbis_time', array('size'=>6,'nowrapper'=>true))?>
+		</div>
+	</div>
+
 	<?php echo $form->textField($element, 'orbis_location', array('size' => '30'))?>
 </div>

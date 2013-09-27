@@ -24,10 +24,12 @@
  * @property string $id
  * @property integer $event_id
  * @property string $local_name
- * @property string $local_datetime
+ * @property string $local_date
+ * @property string $local_time
  * @property string $local_location
  * @property string $orbis_name
- * @property string $local_datetime
+ * @property string $local_date
+ * @property string $local_time
  * @property string $orbis_location
  *
  * The followings are the available model relations:
@@ -68,11 +70,13 @@ class Element_OphCoDischargesummary_FollowUp extends BaseEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, local_name, local_datetime, local_location, orbis_name, local_datetime, orbis_location, ', 'safe'),
-			array('local_name, local_datetime, local_location, orbis_name, local_datetime, orbis_location, ', 'required'),
+			array('event_id, local_name, local_date, local_time, local_location, orbis_name, orbis_date, orbis_time, orbis_location, ', 'safe'),
+			array('local_name, local_date, local_time, local_location, orbis_name, orbis_date, orbis_time, orbis_location, ', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, local_name, local_datetime, local_location, orbis_name, local_datetime, orbis_location, ', 'safe', 'on' => 'search'),
+			array('id, event_id, local_name, local_date, local_time, local_location, orbis_name, orbis_datetime, orbis_time, orbis_location, ', 'safe', 'on' => 'search'),
+			array('local_time', 'date', 'format' => 'HH:mm'),
+			array('orbis_time', 'date', 'format' => 'HH:mm'),
 		);
 	}
 
@@ -101,10 +105,12 @@ class Element_OphCoDischargesummary_FollowUp extends BaseEventTypeElement
 			'id' => 'ID',
 			'event_id' => 'Event',
 			'local_name' => 'Local name',
-			'local_datetime' => 'Local date time',
+			'local_date' => 'Local date',
+			'local_time' => 'Time',
 			'local_location' => 'Local location',
 			'orbis_name' => 'ORBIS name',
-			'orbis_datetime' => 'ORBIS date time',
+			'orbis_date' => 'ORBIS date',
+			'orbis_time' => 'Time',
 			'orbis_location' => 'ORBIS location',
 		);
 	}
@@ -123,10 +129,12 @@ class Element_OphCoDischargesummary_FollowUp extends BaseEventTypeElement
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('event_id', $this->event_id, true);
 		$criteria->compare('local_name', $this->local_name);
-		$criteria->compare('local_datetime', $this->local_datetime);
+		$criteria->compare('local_date', $this->local_date);
+		$criteria->compare('local_time', $this->local_time);
 		$criteria->compare('local_location', $this->local_location);
 		$criteria->compare('orbis_name', $this->orbis_name);
-		$criteria->compare('local_datetime', $this->local_datetime);
+		$criteria->compare('orbis_date', $this->local_date);
+		$criteria->compare('orbis_time', $this->local_time);
 		$criteria->compare('orbis_location', $this->orbis_location);
 
 		return new CActiveDataProvider(get_class($this), array(
@@ -134,22 +142,10 @@ class Element_OphCoDischargesummary_FollowUp extends BaseEventTypeElement
 		));
 	}
 
-
-
-	protected function beforeSave()
+	protected function afterFind()
 	{
-		return parent::beforeSave();
-	}
-
-	protected function afterSave()
-	{
-
-		return parent::afterSave();
-	}
-
-	protected function beforeValidate()
-	{
-		return parent::beforeValidate();
+		$this->local_time = substr($this->local_time,0,5);
+		$this->orbis_time = substr($this->orbis_time,0,5);
 	}
 }
 ?>
