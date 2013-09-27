@@ -39,8 +39,8 @@
 			<td><span class="big"><?php echo CHtml::encode($element->orbis_name)?></span></td>
 		</tr>
 		<tr>
-			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('local_datetime'))?></td>
-			<td><span class="big"><?php echo CHtml::encode($element->NHSDate('local_datetime'))?></span></td>
+			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('orbis_datetime'))?></td>
+			<td><span class="big"><?php echo CHtml::encode($element->NHSDate('orbis_datetime'))?></span></td>
 		</tr>
 		<tr>
 			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('orbis_location'))?></td>

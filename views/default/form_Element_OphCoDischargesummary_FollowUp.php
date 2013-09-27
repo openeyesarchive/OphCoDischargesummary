@@ -29,6 +29,6 @@
 	<?php echo $form->datePicker($element, 'local_datetime', array('maxDate' => 'today'), array('style'=>'width: 110px;'))?>
 	<?php echo $form->textField($element, 'local_location', array('size' => '30'))?>
 	<?php echo $form->textField($element, 'orbis_name', array('size' => '30'))?>
-	<?php echo $form->datePicker($element, 'local_datetime', array('maxDate' => 'today'), array('style'=>'width: 110px;'))?>
+	<?php echo $form->datePicker($element, 'orbis_datetime', array('maxDate' => 'today'), array('style'=>'width: 110px;'))?>
 	<?php echo $form->textField($element, 'orbis_location', array('size' => '30'))?>
 </div>
