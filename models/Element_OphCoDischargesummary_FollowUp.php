@@ -71,7 +71,7 @@ class Element_OphCoDischargesummary_FollowUp extends BaseEventTypeElement
 		// will receive user inputs.
 		return array(
 			array('event_id, local_name, local_date, local_time, local_location, orbis_name, orbis_date, orbis_time, orbis_location, ', 'safe'),
-			array('local_name, local_date, local_time, local_location, orbis_name, orbis_date, orbis_time, orbis_location, ', 'required'),
+			//array('local_name, local_date, local_time, local_location, orbis_name, orbis_date, orbis_time, orbis_location, ', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, event_id, local_name, local_date, local_time, local_location, orbis_name, orbis_datetime, orbis_time, orbis_location, ', 'safe', 'on' => 'search'),
