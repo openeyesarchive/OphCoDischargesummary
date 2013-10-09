@@ -40,8 +40,6 @@
 
 class Element_OphCoDischargesummary_Activity extends BaseEventTypeElement
 {
-	public $service;
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return the static model class
@@ -68,7 +66,7 @@ class Element_OphCoDischargesummary_Activity extends BaseEventTypeElement
 		// will receive user inputs.
 		return array(
 			array('event_id, resume_normal_activity, posturing, avoid_strenuous_activity, bend_with_knees_not_waist, comments, ', 'safe'),
-			array('resume_normal_activity, posturing, avoid_strenuous_activity, bend_with_knees_not_waist, comments, ', 'required'),
+			array('resume_normal_activity, avoid_strenuous_activity, bend_with_knees_not_waist', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, event_id, resume_normal_activity, posturing, avoid_strenuous_activity, bend_with_knees_not_waist, comments, ', 'safe', 'on' => 'search'),

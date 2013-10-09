@@ -73,7 +73,7 @@ class Element_OphCoDischargesummary_EyeCare extends BaseEventTypeElement
 		// will receive user inputs.
 		return array(
 			array('event_id, wear_eye_shield_until, wear_shield_when_sleeping, do_not_use_pad_or_shield, wash_your_hands, do_not_rub_your_eye, wash_eye_shield, keep_water_out_of_your_eye, wear_glasses, dont_contaminate, comments, ', 'safe'),
-			array('wear_eye_shield_until, wear_shield_when_sleeping, do_not_use_pad_or_shield, wash_your_hands, do_not_rub_your_eye, wash_eye_shield, keep_water_out_of_your_eye, wear_glasses, dont_contaminate, comments, ', 'required'),
+			array('wear_eye_shield_until, wear_shield_when_sleeping, do_not_use_pad_or_shield, wash_your_hands, do_not_rub_your_eye, wash_eye_shield, keep_water_out_of_your_eye, wear_glasses, dont_contaminate', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, event_id, wear_eye_shield_until, wear_shield_when_sleeping, do_not_use_pad_or_shield, wash_your_hands, do_not_rub_your_eye, wash_eye_shield, keep_water_out_of_your_eye, wear_glasses, dont_contaminate, comments, ', 'safe', 'on' => 'search'),
