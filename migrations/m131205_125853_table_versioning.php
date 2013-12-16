@@ -355,26 +355,16 @@ CREATE TABLE `ophcodischargesummary_route_version` (
 	public function down()
 	{
 		$this->dropColumn('ophcodischargesummary_duration','deleted');
-		$this->dropColumn('ophcodischargesummary_duration_version','deleted');
 		$this->dropColumn('ophcodischargesummary_frequency','deleted');
-		$this->dropColumn('ophcodischargesummary_frequency_version','deleted');
 		$this->dropColumn('ophcodischargesummary_medication','deleted');
-		$this->dropColumn('ophcodischargesummary_medication_version','deleted');
 		$this->dropColumn('ophcodischargesummary_medication_item','deleted');
-		$this->dropColumn('ophcodischargesummary_medication_item_version','deleted');
 		$this->dropColumn('ophcodischargesummary_route','deleted');
-		$this->dropColumn('ophcodischargesummary_route_version','deleted');
 
 		$this->dropColumn('et_ophcodischargesummary_activity','deleted');
-		$this->dropColumn('et_ophcodischargesummary_activity_version','deleted');
 		$this->dropColumn('et_ophcodischargesummary_charges','deleted');
-		$this->dropColumn('et_ophcodischargesummary_charges_version','deleted');
 		$this->dropColumn('et_ophcodischargesummary_eyecare','deleted');
-		$this->dropColumn('et_ophcodischargesummary_eyecare_version','deleted');
 		$this->dropColumn('et_ophcodischargesummary_followup','deleted');
-		$this->dropColumn('et_ophcodischargesummary_followup_version','deleted');
 		$this->dropColumn('et_ophcodischargesummary_medications','deleted');
-		$this->dropColumn('et_ophcodischargesummary_medications_version','deleted');
 
 		$this->dropTable('et_ophcodischargesummary_activity_version');
 		$this->dropTable('et_ophcodischargesummary_charges_version');
