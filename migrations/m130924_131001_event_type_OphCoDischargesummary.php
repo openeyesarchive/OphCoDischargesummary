@@ -45,16 +45,16 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'CONSTRAINT `et_ophcodischargesummary_charges_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcodischargesummary_charges_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcodischargesummary_charges_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->createTable('et_ophcodischargesummary_activity', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
 				'event_id' => 'int(10) unsigned NOT NULL',
 				'resume_normal_activity' => 'tinyint(1) unsigned NOT NULL',
-				'posturing' => 'varchar(255) COLLATE utf8_bin DEFAULT \'\'',
+				'posturing' => 'varchar(255) DEFAULT \'\'',
 				'avoid_strenuous_activity' => 'tinyint(1) unsigned NOT NULL',
 				'bend_with_knees_not_waist' => 'tinyint(1) unsigned NOT NULL',
-				'comments' => 'text COLLATE utf8_bin DEFAULT \'\'',
+				'comments' => 'text DEFAULT \'\'',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
 				'created_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
@@ -66,7 +66,7 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'CONSTRAINT `et_ophcodischargesummary_activity_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcodischargesummary_activity_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcodischargesummary_activity_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->createTable('et_ophcodischargesummary_eyecare', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
@@ -80,7 +80,7 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'keep_water_out_of_your_eye' => 'tinyint(1) unsigned NOT NULL',
 				'wear_glasses' => 'tinyint(1) unsigned NOT NULL',
 				'dont_contaminate' => 'tinyint(1) unsigned NOT NULL',
-				'comments' => 'text COLLATE utf8_bin DEFAULT \'\'',
+				'comments' => 'text DEFAULT \'\'',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
 				'created_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
@@ -92,7 +92,7 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'CONSTRAINT `et_ophcodischargesummary_eyecare_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcodischargesummary_eyecare_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcodischargesummary_eyecare_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->createTable('et_ophcodischargesummary_medications', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
@@ -109,11 +109,11 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'CONSTRAINT `et_ophcodischargesummary_medications_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcodischargesummary_medications_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcodischargesummary_medications_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->createTable('ophcodischargesummary_medication', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(64) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(64) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -124,7 +124,7 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'KEY `ophcodischargesummary_medication_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `ophcodischargesummary_medication_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcodischargesummary_medication_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('ophcodischargesummary_medication',array('name'=>'Intracameral Cefuroxime','display_order'=>1));
 		$this->insert('ophcodischargesummary_medication',array('name'=>'Sub-conj Cephalexin 0.25 mg','display_order'=>2));
@@ -140,7 +140,7 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 
 		$this->createTable('ophcodischargesummary_route', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(64) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(64) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -151,7 +151,7 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'KEY `ophcodischargesummary_route_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `ophcodischargesummary_route_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcodischargesummary_route_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('ophcodischargesummary_route',array('name'=>'Eye','display_order'=>1));
 		$this->insert('ophcodischargesummary_route',array('name'=>'IM','display_order'=>2));
@@ -176,8 +176,8 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 
 		$this->createTable('ophcodischargesummary_frequency', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(64) COLLATE utf8_bin NOT NULL',
-				'long_name' => 'varchar(64) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(64) NOT NULL',
+				'long_name' => 'varchar(64) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -188,7 +188,7 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'KEY `ophcodischargesummary_frequency_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `ophcodischargesummary_frequency_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcodischargesummary_frequency_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('ophcodischargesummary_frequency',array('name'=>'Every 15 mins','long_name'=>'every fifteen minute','display_order'=>1));
 		$this->insert('ophcodischargesummary_frequency',array('name'=>'1/2 hourly','long_name'=>'every half hour','display_order'=>2));
@@ -213,7 +213,7 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 
 		$this->createTable('ophcodischargesummary_duration', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(64) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(64) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -224,7 +224,7 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'KEY `ophcodischargesummary_duration_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `ophcodischargesummary_duration_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcodischargesummary_duration_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('ophcodischargesummary_duration',array('name'=>'1 day','display_order'=>1));
 		$this->insert('ophcodischargesummary_duration',array('name'=>'2 days','display_order'=>2));
@@ -255,17 +255,17 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'KEY `ophcodischargesummary_medications_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `ophcodischargesummary_medications_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcodischargesummary_medications_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->createTable('et_ophcodischargesummary_followup', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
 				'event_id' => 'int(10) unsigned NOT NULL',
-				'local_name' => 'varchar(255) COLLATE utf8_bin DEFAULT \'\'',
+				'local_name' => 'varchar(255) DEFAULT \'\'',
 				'local_datetime' => 'date DEFAULT NULL',
-				'local_location' => 'varchar(255) COLLATE utf8_bin DEFAULT \'\'',
-				'orbis_name' => 'varchar(255) COLLATE utf8_bin DEFAULT \'\'',
+				'local_location' => 'varchar(255) DEFAULT \'\'',
+				'orbis_name' => 'varchar(255) DEFAULT \'\'',
 				'orbis_datetime' => 'date DEFAULT NULL',
-				'orbis_location' => 'varchar(255) COLLATE utf8_bin DEFAULT \'\'',
+				'orbis_location' => 'varchar(255) DEFAULT \'\'',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
 				'created_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
@@ -277,7 +277,7 @@ class m130924_131001_event_type_OphCoDischargesummary extends CDbMigration
 				'CONSTRAINT `et_ophcodischargesummary_followup_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcodischargesummary_followup_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `et_ophcodischargesummary_followup_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 	}
 
 	public function down()
