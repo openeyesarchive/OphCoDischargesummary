@@ -26,7 +26,7 @@
  * @property integer $display_order
  */
 
-class OphCoDischargesummary_Route extends BaseEventTypeElement
+class OphCoDischargesummary_Route extends BaseActiveRecordVersionedSoftDelete
 {
 	public $service;
 

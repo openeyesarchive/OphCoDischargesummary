@@ -26,7 +26,7 @@
  * @property integer $display_order
  */
 
-class OphCoDischargesummary_Frequency extends BaseEventTypeElement
+class OphCoDischargesummary_Frequency extends BaseActiveRecordVersionedSoftDelete
 {
 	public $service;
 
