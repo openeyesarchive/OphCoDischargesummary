@@ -19,9 +19,9 @@
 ?>
 
 <tr>
-	<td><?php echo CHtml::dropDownList('medication_id[]',$medication->medication_id,CHtml::listData(OphCoDischargesummary_Medication::model()->findAll(array('order'=>'display_order asc')),'id','name'),array('empty'=>'- Select -'))?></td>
-	<td><?php echo CHtml::dropDownList('route_id[]',$medication->route_id,CHtml::listData(OphCoDischargesummary_Route::model()->findAll(array('order'=>'display_order asc')),'id','name'),array('empty'=>'- Select -'))?></td>
-	<td><?php echo CHtml::dropDownList('frequency_id[]',$medication->frequency_id,CHtml::listData(OphCoDischargesummary_Frequency::model()->findAll(array('order'=>'display_order asc')),'id','name'),array('empty'=>'- Select -'))?></td>
-	<td><?php echo CHtml::dropDownList('duration_id[]',$medication->duration_id,CHtml::listData(OphCoDischargesummary_Duration::model()->findAll(array('order'=>'display_order asc')),'id','name'),array('empty'=>'- Select -'))?></td>
+	<td><?php echo CHtml::dropDownList('medication_id[]',$medication->medication_id,CHtml::listData(OphCoDischargesummary_Medication::model()->activeOrPk($medication->medication_id)->findAll(array('order'=>'display_order asc')),'id','name'),array('empty'=>'- Select -'))?></td>
+	<td><?php echo CHtml::dropDownList('route_id[]',$medication->route_id,CHtml::listData(OphCoDischargesummary_Route::model()->activeOrPk($medication->route_id)->findAll(array('order'=>'display_order asc')),'id','name'),array('empty'=>'- Select -'))?></td>
+	<td><?php echo CHtml::dropDownList('frequency_id[]',$medication->frequency_id,CHtml::listData(OphCoDischargesummary_Frequency::model()->activeOrPk($medication->frequency_id)->findAll(array('order'=>'display_order asc')),'id','name'),array('empty'=>'- Select -'))?></td>
+	<td><?php echo CHtml::dropDownList('duration_id[]',$medication->duration_id,CHtml::listData(OphCoDischargesummary_Duration::model()->activeOrPk($medication->duration_id)->findAll(array('order'=>'display_order asc')),'id','name'),array('empty'=>'- Select -'))?></td>
 	<td><a href="#" class="removeMedication">remove</a>
 </tr>
